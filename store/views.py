@@ -9,9 +9,28 @@ def store(request):
     return render(request, 'store/Store.html', context)
 
 def cart(request):
-    context = {}
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+    else: #For a case user is not authenticated
+        items = []
+        order = {'get_cart_total':0, 'get_cart_items':0}
+
+    context = {'items':items, 'order':order}
     return render(request, 'store/Cart.html', context)
 
 def checkout(request):
-    context = {}
-    return render(request, 'store/Checkout.html')
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+
+    else: #For a case user is not authenticated
+        order = {'get_cart_total':0, 'get_cart_items':0}
+        items = []
+
+    context = {'items':items, 'order':order}
+    return render(request, 'store/Checkout.html', context)

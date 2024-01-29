@@ -4,8 +4,12 @@
 {% block content %}
     <div class="row">
         {% for product in products %}
-        <div class="col-lg-4">
-            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+        <div class="col-lg-4" style="text-align: center">
+            {% if product.image %}
+            <img class="thumbnail" style="width: 160px" src="{{ product.image.url }}">
+            {% else %}
+            <img class="thumbnail" style="width: 160px" src="">
+            {% endif %}
             <div class="box-element product">
                 <h6><strong>{{ product.name }}</strong></h6>
                 <hr>
