@@ -91,7 +91,7 @@
         var total = '{{order.get_cart_total|floatformat:2}}'
         console.log(shipping)
 
-        if (shipping == 'False'){
+        if (shipping === 'False'){
             document.getElementById('shipping-info').innerHTML = ''
         }
 
@@ -99,7 +99,7 @@
             document.getElementById('user-info').innerHTML = ''
         }
 
-        if (shipping == 'False' && user != 'AnonymousUser'){
+        if (shipping === 'False' && user != 'AnonymousUser'){
             //hide entire form is logged on
             document.getElementById('form-wrapper').classList.add('hidden');
             

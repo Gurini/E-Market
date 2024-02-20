@@ -4,7 +4,7 @@
 {% block content %}
     <div class="row">
         {% for product in products %}
-        <div class="col-lg-4" style="text-align: center">
+        <div class="col-lg-4 pt-sans" style="text-align: center">
             {% if product.image %}
             <img class="thumbnail" style="width: 160px" src="{{ product.image.url }}">
             {% else %}

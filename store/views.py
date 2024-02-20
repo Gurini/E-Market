@@ -80,5 +80,5 @@ def upadateItem(request):
     return JsonResponse('Item was added', safe=False)
 
 def processOrder(request):
-    print('dAta:', request.body)
+    print('data:', request.body)
     return JsonResponse('Order submitted', safe=False)
